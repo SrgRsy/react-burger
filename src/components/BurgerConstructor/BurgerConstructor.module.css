@@ -1,0 +1,51 @@
+.BurgerConstructor__section {
+    margin: 0px 20px;
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    height: 912px;
+    margin: 100px 40px;
+    padding: 0px 4px 92px;
+    border-radius: 0px;
+}
+
+.BurgerConstructor__count {
+    font-family: Iceland;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 48px;
+    line-height: 36px;
+    width: 120px;
+    margin: 10px;
+}
+
+.BurgerConstructor__botBlock {
+    margin: 40px 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    height: 64px;
+}
+
+.BurgerConstructor__itemBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    height: 740px;
+    margin: 8px 0px;
+    overflow: auto;
+}
+
+.BurgerConstructor__itemBlock::-webkit-scrollbar {
+    width: 12px;
+}
+
+.BurgerConstructor__itemBlock::-webkit-scrollbar-thumb {
+    background: #8585AD;
+    border: 3px solid #2F2F37;
+    border-radius: 6px;
+}
+
+.BurgerConstructor__itemBlock::-webkit-scrollbar-track {
+    background: #2F2F37;
+}

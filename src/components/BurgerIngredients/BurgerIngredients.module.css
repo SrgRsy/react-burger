@@ -1,0 +1,89 @@
+.ingridientsBlock {
+    margin: 40px 20px;
+    height: 912px;
+    width: 600px;
+    left: 340px;
+    top: 88px;
+    border-radius: 0px;
+    background: #131316;
+}
+
+.ingredient__item {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    height: 210px;
+    width: 272px;
+}
+
+.ingredient__itemImage {
+    height: 120px;
+    width: 240px;
+    left: 0px;
+    top: 0px;
+    border-radius: 0px;
+}
+
+.ingredient__itemBlock {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.ingredient__itemCount {
+    display:flex;
+    justify-content: center;
+    font-family: Iceland;
+    font-size: 28px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    letter-spacing: 0em;
+    text-align: center;
+    margin: 4px 4px;
+}
+
+.ingredient__itemName {
+    display: block;
+    width: 240px;
+    height: 48px;
+    margin: 8px 0px;
+    font-family: JetBrains Mono;
+    font-size: 16px;
+    line-height: 24px;
+    text-align: center;
+}
+
+.ingridientsBlock__title {
+    font-family: JetBrains Mono;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+    display: flex;
+    align-items: center;
+    color: #F2F2F3;
+}
+
+.ingridient__area {
+    display: flex;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    width: 592px;
+    height: 912px;
+}
+
+.ingridient__area::-webkit-scrollbar {
+    width: 12px;
+}
+
+.ingridient__area::-webkit-scrollbar-thumb {
+    background: #8585AD;
+    border: 3px solid #2F2F37;
+    border-radius: 6px;
+}
+
+.ingridient__area::-webkit-scrollbar-track {
+    background: #2F2F37;
+}
