@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "./BurgerConstructor.module.css";
+import OrderDetails from '../OrderDetails/OrderDetails';
 import {
   Button,
   ConstructorElement,
@@ -9,6 +10,7 @@ import {
 import img from "../../images/bun.png";
 
 const BurgerConstructorElement = (props: any) => {
+
   return (
     <div>
       <div
@@ -27,7 +29,7 @@ const BurgerConstructorElement = (props: any) => {
           thumbnail={img}
         />
       </div>
-      <Primer data={props.data} />
+      <ItemBlock data={props.data} />
       <div
         style={{
           display: "flex",
@@ -48,12 +50,13 @@ const BurgerConstructorElement = (props: any) => {
   );
 };
 
-const Primer = (props: any) => {
+const ItemBlock = (props: any) => {
   return (
-    <div className ={styles.BurgerConstructor__itemBlock}>
+    <div className={styles.BurgerConstructor__itemBlock}>
       {props.data.map((item: any) => {
         return (
           <div
+            key={item._id}
             style={{
               display: "flex",
               flexDirection: "row",
@@ -76,14 +79,32 @@ const Primer = (props: any) => {
 };
 
 const BurgerConstructor = (props: any) => {
+  const [state, setState] = React.useState({ display: 'none' })
+
+    const onHandleModalOpen = () => {
+    setState({ display: 'block' });
+  }
+
+  const onHandleClose = () => {
+    setState({ display: 'none' });
+  }
+
+  const handleEscKey = (e: any) => {
+    if (e.keyCode === 27 || e.keyCode === 13) {
+      setState({ display: 'none' })
+    }
+  }
+
+
   return (
     <section className={styles.BurgerConstructor__section}>
+      <OrderDetails state={state} handleEscKey={handleEscKey} onHandleClose={onHandleClose} />
       <BurgerConstructorElement data={props.data} />
       <div className={styles.BurgerConstructor__botBlock}>
         <p className={styles.BurgerConstructor__count}>
           <CurrencyIcon type="primary" /> {props.count}{" "}
         </p>
-        <Button type="primary" size="large">
+        <Button onClick={onHandleModalOpen} type="primary" size="large">
           Оформить заказ
         </Button>
       </div>

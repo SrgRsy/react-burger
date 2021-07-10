@@ -18,3 +18,9 @@ body {
   line-height: 24px;
   color: #F2F2F3;
 }
+
+.constructor-element__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
