@@ -1,85 +1,17 @@
 import React from "react";
 import styles from "./BurgerConstructor.module.css";
-import OrderDetails from '../OrderDetails/OrderDetails';
+import Modal from '../Modal/Modal';
+import BurgerConstructorElement from '../BurgerConstructorElement/BurgerConstructorElement';
+import PropTypes from 'prop-types';
 import {
   Button,
-  ConstructorElement,
-  CurrencyIcon,
-  DragIcon,
+  CurrencyIcon
 } from "@ya.praktikum/react-developer-burger-ui-components";
-import img from "../../images/bun.png";
 
-const BurgerConstructorElement = (props: any) => {
 
-  return (
-    <div>
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          paddingLeft: "20px",
-        }}
-      >
-        <ConstructorElement
-          type="top"
-          isLocked={true}
-          text="Краторная булка N-200i (верх)"
-          price={200}
-          thumbnail={img}
-        />
-      </div>
-      <ItemBlock data={props.data} />
-      <div
-        style={{
-          display: "flex",
-          flexDirection: "row",
-          alignItems: "center",
-          paddingLeft: "20px",
-        }}
-      >
-        <ConstructorElement
-          type="bottom"
-          isLocked={true}
-          text="Краторная булка N-200i (низ)"
-          price={200}
-          thumbnail={img}
-        />
-      </div>
-    </div>
-  );
-};
-
-const ItemBlock = (props: any) => {
-  return (
-    <div className={styles.BurgerConstructor__itemBlock}>
-      {props.data.map((item: any) => {
-        return (
-          <div
-            key={item._id}
-            style={{
-              display: "flex",
-              flexDirection: "row",
-              alignItems: "center",
-              width: "555px",
-            }}
-          >
-            <DragIcon type="primary" />
-            <ConstructorElement
-              text={item.name}
-              price={item.price}
-              thumbnail={item.image}
-              key={item._id}
-            />
-          </div>
-        );
-      })}
-    </div>
-  );
-};
-
-const BurgerConstructor = (props: any) => {
+const BurgerConstructor = (props) => {
   const [state, setState] = React.useState({ display: 'none' })
+  const [elementType, setElementType] = React.useState('order')
 
     const onHandleModalOpen = () => {
     setState({ display: 'block' });
@@ -89,7 +21,7 @@ const BurgerConstructor = (props: any) => {
     setState({ display: 'none' });
   }
 
-  const handleEscKey = (e: any) => {
+  const handleEscKey = (e) => {
     if (e.keyCode === 27 || e.keyCode === 13) {
       setState({ display: 'none' })
     }
@@ -98,7 +30,7 @@ const BurgerConstructor = (props: any) => {
 
   return (
     <section className={styles.BurgerConstructor__section}>
-      <OrderDetails state={state} handleEscKey={handleEscKey} onHandleClose={onHandleClose} />
+      <Modal elementType = {elementType} state = {state} onHandleClose={onHandleClose} handleEscKey={handleEscKey} />
       <BurgerConstructorElement data={props.data} />
       <div className={styles.BurgerConstructor__botBlock}>
         <p className={styles.BurgerConstructor__count}>
@@ -111,5 +43,15 @@ const BurgerConstructor = (props: any) => {
     </section>
   );
 };
+
+
+BurgerConstructor.propTypes = {
+  data : PropTypes.array.isRequired,
+  count : PropTypes.string,
+  state : PropTypes.object,
+  modalName : PropTypes.string
+}
+
+
 
 export default BurgerConstructor;
