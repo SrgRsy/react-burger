@@ -3,14 +3,17 @@ import styles from "./BurgerConstructor.module.css";
 import Modal from "../Modal/Modal";
 import BurgerConstructorElement from "../BurgerConstructorElement/BurgerConstructorElement";
 import PropTypes from "prop-types";
+import OrderDetails from "../OrderDetails/OrderDetails";
+import ModalOverlay from "../ModalOverlay/ModalOverlay";
 import {
   Button,
   CurrencyIcon,
 } from "@ya.praktikum/react-developer-burger-ui-components";
 
+
 const BurgerConstructor = (props) => {
   const [state, setState] = React.useState({ display: "none" });
-  const [elementType, setElementType] = React.useState("order");
+  const elementType = "order";
 
   const onHandleModalOpen = () => {
     setState({ display: "block" });
@@ -20,20 +23,23 @@ const BurgerConstructor = (props) => {
     setState({ display: "none" });
   };
 
-  const handleEscKey = (e) => {
-    if (e.keyCode === 27 || e.keyCode === 13) {
-      setState({ display: "none" });
-    }
-  };
+  
 
   return (
     <section className={styles.BurgerConstructor__section}>
-      <Modal
-        elementType={elementType}
-        state={state}
+      <ModalOverlay
         onHandleClose={onHandleClose}
-        handleEscKey={handleEscKey}
-      />
+        state={state}
+        elementType={elementType}
+      >
+        <Modal
+          elementType={elementType}
+          state={state}
+          onHandleClose={onHandleClose}
+        >
+          <OrderDetails />
+        </Modal>
+      </ModalOverlay>
       <BurgerConstructorElement data={props.data} />
       <div className={styles.BurgerConstructor__botBlock}>
         <p className={styles.BurgerConstructor__count}>
