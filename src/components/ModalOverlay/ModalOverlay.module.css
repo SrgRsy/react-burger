@@ -1,0 +1,8 @@
+.overlay {
+    position: fixed;
+    height: 100%;
+    width: 100%;
+    background: #1c1c21;
+    background:rgba(28, 28, 33,.6);
+    
+}

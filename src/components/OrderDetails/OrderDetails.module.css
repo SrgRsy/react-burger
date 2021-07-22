@@ -1,0 +1,45 @@
+.OrderDetails__block {
+    display: flex;
+    flex-direction: column;
+    width:720px;
+}
+
+.OrderDetails__orderIdent {
+    margin: 32px auto 0px;
+    font-family: JetBrains Mono;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    color: #F2F2F3;
+}
+
+.OrderDetails__acceptImg {
+    margin: 60px auto 0px;
+    height: 120px;
+    width: 120px;
+    left: 300px;
+    top: 362px;
+    border-radius: 0px;
+}
+
+.OrderDetails__orderInfo {
+    display: block;
+    text-align: center;
+    height: 24px;
+    font-family: JetBrains Mono;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.OrderDetails__infoBlock {
+    margin: 60px 120px;
+    height: 56px;
+    width: 520px;
+    margin-bottom: 120px;
+}
+
+.OrderDetails__orderNumberBlock {
+    margin: 0px auto 0px;
+}
