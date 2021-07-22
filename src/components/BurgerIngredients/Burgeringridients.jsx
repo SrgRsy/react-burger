@@ -5,15 +5,17 @@ import Ingredient from "../Ingredients/Ingredient";
 import Tabs from "../Tabs/Tabs";
 import PropTypes from "prop-types";
 import ModalOverlay from "../ModalOverlay/ModalOverlay";
-import OrderDetails from "../OrderDetails/OrderDetails";
 import IngredientDetails from "../IngredientDetails/IngredientDetails";
 
 const BurgerIngredients = (props) => {
   const [state, setState] = React.useState({ display: "none" });
+  const [selectedIngredient, setselectedIngredient] = React.useState(null);
+
   const elementType = "ingredient";
 
-  const onHandleModalOpen = () => {
+  const onHandleModalOpen = (item) => {
     setState({ display: "block" });
+    setselectedIngredient(item);
   };
 
   const onHandleClose = () => {
@@ -33,7 +35,7 @@ const BurgerIngredients = (props) => {
           onHandleClose={onHandleClose}
           modalName="Наименование"
         >
-          <IngredientDetails />
+          <IngredientDetails {...selectedIngredient} />
         </Modal>
       </ModalOverlay>
       <h1>Соберите бургер</h1>
@@ -46,7 +48,8 @@ const BurgerIngredients = (props) => {
               // Если убрать return, map перестает отображать компонент.
               return (
                 <Ingredient
-                  onClick={onHandleModalOpen}
+                  onHandleModalOpen={onHandleModalOpen}
+                  item={item}
                   count={item.price}
                   name={item.name}
                   image={item.image}
@@ -63,8 +66,9 @@ const BurgerIngredients = (props) => {
               // Если убрать return, map перестает отображать компонент.
               return (
                 <Ingredient
-                  onClick={onHandleModalOpen}
+                  onHandleModalOpen={onHandleModalOpen}
                   count={item.price}
+                  item={item}
                   name={item.name}
                   image={item.image}
                   key={item._id}
@@ -80,9 +84,10 @@ const BurgerIngredients = (props) => {
               // Если убрать return, map перестает отображать компонент.
               return (
                 <Ingredient
-                  onClick={onHandleModalOpen}
+                  onHandleModalOpen={onHandleModalOpen}
                   count={item.price}
                   name={item.name}
+                  item={item}
                   image={item.image}
                   key={item._id}
                 />
